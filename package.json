@@ -1,0 +1,39 @@
+{
+  "name": "uacsimulater",
+  "version": "1.0.0",
+  "description": "A simulater for UAC of windows.",
+  "main": "index.js",
+  "scripts": {
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "keywords": [],
+  "author": "Kieran Kihn",
+  "license": "MIT",
+  "build": {
+    "appId": "com.kierankihn.uacsimulater",
+    "productName": "uacsimulater",
+    "copyright": "Kieran Kihn",
+    "compression": "normal",
+    "win": {
+      "icon": "img/icon.ico",
+      "target": [
+        "portable"
+      ]
+    },
+    "extraResources": [
+      {
+        "from": "img",
+        "to": "img"
+      },
+      {
+        "from": "src",
+        "to": "src"
+      }
+    ]
+  },
+  "devDependencies": {
+    "electron": "^20.0.0",
+    "electron-builder": "^24.9.1"
+  }
+}
